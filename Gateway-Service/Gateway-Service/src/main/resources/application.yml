@@ -1,0 +1,42 @@
+#spring:
+#  application:
+#    name: getway
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: currenciesa
+          uri: lb://currenciesa
+          predicates:
+            - Path=/currency/**
+        - id: rate
+          uri: lb://rate
+          predicates:
+            - Path=/rate/**
+        - id: calculate
+          uri: lb://calculate
+          predicates:
+            - Path=/calculate/**
+        - id: active
+          uri: lb://active
+          predicates:
+            - Path=/active/**
+        - id: consumer
+          uri: lb://consumer
+          predicates:
+            - Path=/read/**
+        - id: producer
+          uri: lb://producer
+          predicates:
+            - Path=/producer/**
+
+#
+#spring:
+#  application:
+#    name: zuul-gateway
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#
